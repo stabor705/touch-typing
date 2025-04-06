@@ -1,13 +1,13 @@
-"use client"
-
-import TypingTrial from "@/app/ui/TypingTrial";
+import TypingLearning from "@/app/ui/TypingLearning";
 
 export default function Home() {
 
   return (
     <>
       <div className={"h-full flex justify-center items-center"}>
-        <TypingTrial text={"Hello, World!"}/>
+        <div className={"w-4/5"}>
+          <TypingLearning/>
+        </div>
       </div>
     </>
   )
