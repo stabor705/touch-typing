@@ -18,17 +18,26 @@ const isAPassingCharacter = (character: string) => {
 
 interface TypingTrialProps {
   text: string
-  setScore: (score: TypingScore) => void
+  setScore: (score: TypingScore | undefined) => void
+  onTrialEnd: () => void
 }
 
-export default function TypingTrial({text, setScore}: TypingTrialProps)  {
+export default function TypingTrial({text, setScore, onTrialEnd}: TypingTrialProps)  {
   const [cursorPosition, setCursorPosition] = useState(0)
-
   const [characters, setCharacters] = useState<CharacterTest[]>(text.split('').map(character => ({result: "default", character})))
   const [inFocus, setInFocus] = useState(false)
 
+  useEffect(() => {
+    setCursorPosition(0)
+    setCharacters(text.split('').map(character => ({result: "default", character})))
+    setScore(undefined)
+  }, [text]);
+
   const handleKeyDown: (event: KeyboardEvent) => void = useCallback(event => {
     if (!inFocus) {
+      return
+    }
+    if (cursorPosition >= characters.length) {
       return
     }
     if (!isAPassingCharacter(event.key)) {
@@ -69,6 +78,12 @@ export default function TypingTrial({text, setScore}: TypingTrialProps)  {
       accuracy: successesCount / totalCount
     })
   }, [characters]);
+
+  useEffect(() => {
+    if (cursorPosition >= characters.length) {
+      onTrialEnd()
+    }
+  }, [cursorPosition, characters]);
 
   return (
       <div

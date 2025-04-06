@@ -1,5 +1,4 @@
-export default function generateTrials(clusterLength: number, numberOfClusters: number): string[] {
-  const characterSet = "abcdefghijklmnopqrstuvwxyz"
+export default function generateTrials(characterSet: string, clusterLength: number, numberOfClusters: number): string[] {
   return Array.from({ length: numberOfClusters }, () => generateTrial(clusterLength, characterSet))
 }
 

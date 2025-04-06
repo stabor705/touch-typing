@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "characterSet": "jf",
+    "clusterLength": 3,
+    "numberOfClusters": 6,
+    "numberOfTrials": 1,
+    "requiredAccuracy": 0.9
+  },
+  "levels": [
+    {},
+    {
+      "addedCharacters": "gh"
+    },
+    {
+      "addedCharacters": "ur"
+    },
+    {
+      "addedCharacters": "mv",
+      "addedTrials": 1
+    },
+    {
+      "addedCharacters": "yt"
+    },
+    {
+      "addedCharacters": "nb"
+    }
+  ]
+}
